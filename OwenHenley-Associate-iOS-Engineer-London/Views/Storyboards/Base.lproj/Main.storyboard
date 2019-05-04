@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ycv-pc-yFb">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Just Eat-->
+        <scene sceneID="uyW-XU-75H">
+            <objects>
+                <viewController id="wiE-wQ-owl" customClass="SearchViewController" customModule="OwenHenley_Associate_iOS_Engineer_London" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tyc-hl-UoA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="eg: SE18" translatesAutoresizingMaskIntoConstraints="NO" id="WK6-05-ncc">
+                                <rect key="frame" x="0.0" y="140" width="358" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gol-SQ-AT8">
+                                <rect key="frame" x="0.0" y="196" width="414" height="700"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantCell" rowHeight="89" id="Fsy-RG-N0y" customClass="RestaurantTableViewCell" customModule="OwenHenley_Associate_iOS_Engineer_London" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fsy-RG-N0y" id="Okj-EJ-igA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHP-QA-wNT">
+                                <rect key="frame" x="374" y="156" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="PFx-Yo-Dxd"/>
+                                    <constraint firstAttribute="width" constant="24" id="XCb-gr-9h3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="gps"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gol-SQ-AT8" firstAttribute="trailing" secondItem="QJF-eX-wpE" secondAttribute="trailing" id="ACS-UU-rmZ"/>
+                            <constraint firstItem="QJF-eX-wpE" firstAttribute="trailing" secondItem="UHP-QA-wNT" secondAttribute="trailing" constant="16" id="DRc-aJ-Nih"/>
+                            <constraint firstItem="UHP-QA-wNT" firstAttribute="centerY" secondItem="WK6-05-ncc" secondAttribute="centerY" id="Kg5-nq-jXH"/>
+                            <constraint firstItem="UHP-QA-wNT" firstAttribute="leading" secondItem="WK6-05-ncc" secondAttribute="trailing" constant="16" id="LPq-TN-Nvw"/>
+                            <constraint firstItem="WK6-05-ncc" firstAttribute="top" secondItem="QJF-eX-wpE" secondAttribute="top" id="fHG-Qy-iSL"/>
+                            <constraint firstItem="WK6-05-ncc" firstAttribute="leading" secondItem="QJF-eX-wpE" secondAttribute="leading" id="fih-CY-my6"/>
+                            <constraint firstItem="gol-SQ-AT8" firstAttribute="leading" secondItem="QJF-eX-wpE" secondAttribute="leading" id="gYV-Si-fRa"/>
+                            <constraint firstAttribute="bottom" secondItem="gol-SQ-AT8" secondAttribute="bottom" id="jgr-Bx-bxK"/>
+                            <constraint firstItem="gol-SQ-AT8" firstAttribute="top" secondItem="WK6-05-ncc" secondAttribute="bottom" id="yjR-QU-Ypr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QJF-eX-wpE"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Just Eat" id="abv-mJ-2df"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TK2-UP-2fS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2705.7971014492755" y="118.52678571428571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gl7-HH-LK0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ycv-pc-yFb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QhF-ew-F9M">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wiE-wQ-owl" kind="relationship" relationship="rootViewController" id="C41-3h-u6I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0So-97-Myo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1877" y="119"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gps" width="32" height="32"/>
+    </resources>
+</document>
