@@ -2,7 +2,7 @@
 //  Restaurants.swift
 //  OwenHenley-Associate-iOS-Engineer-London
 //
-//  Created by Owen Henley on 04/05/2019.
+//  Created by Owen Henley on 05/05/2019.
 //  Copyright © 2019 Owen Henley. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ struct Restaurants {
 
     enum CodingKeys: String, CodingKey {
         case name = "Name"
-        case rating = "RatingAverage"
+        case rating = "RatingStars"
         case cousineTypes = "CousineTypes"
     }
 

@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="140" width="358" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gol-SQ-AT8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gol-SQ-AT8">
                                 <rect key="frame" x="0.0" y="196" width="414" height="700"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fsy-RG-N0y" id="Okj-EJ-igA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -44,6 +44,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" image="gps"/>
+                                <connections>
+                                    <action selector="locationArrowTapped:" destination="wiE-wQ-owl" eventType="touchUpInside" id="UPI-qI-0jd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,6 +64,10 @@
                         <viewLayoutGuide key="safeArea" id="QJF-eX-wpE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Just Eat" id="abv-mJ-2df"/>
+                    <connections>
+                        <outlet property="searchBar" destination="WK6-05-ncc" id="nSz-cJ-b8s"/>
+                        <outlet property="tableView" destination="gol-SQ-AT8" id="JXD-Ab-fvG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TK2-UP-2fS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,6 +100,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gps" width="32" height="32"/>
+        <image name="gps" width="22" height="22"/>
     </resources>
 </document>

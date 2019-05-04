@@ -10,6 +10,13 @@ import UIKit
 
 class RestaurantTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var logoImageView: UIImageView!
+    @IBOutlet var restaurantNameLabel: UILabel!
+    @IBOutlet var cusineTypesLabel: UILabel!
+    @IBOutlet var ratingStarImageView: [UIImageView]!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

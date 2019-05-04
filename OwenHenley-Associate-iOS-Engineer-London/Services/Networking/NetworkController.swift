@@ -8,8 +8,12 @@
 
 import Foundation
 
+/// This class handles all the networking to the Just Eat api.
+///
+/// Call the singleton `shared()` to use this class.
 class NetworkController {
 
+    // MARK: - Singleton
     static let shared = NetworkController()
 
     
