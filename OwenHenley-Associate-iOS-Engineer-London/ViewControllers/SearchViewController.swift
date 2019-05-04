@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
 
     // MARK: - Properties
-    private var searchResults = [String]()
+    private var searchResults = [Restaurant?]()
     private let cellId = "restaurantCell"
 
     // MARK: - Lifecycle
@@ -49,7 +49,7 @@ extension SearchViewController {
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 150
     }
 
 }

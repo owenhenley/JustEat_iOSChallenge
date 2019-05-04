@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Restaurants {
+struct Restaurant {
     let name: String
     let rating: Double
     let cuisineTypes: [CuisineTypes]

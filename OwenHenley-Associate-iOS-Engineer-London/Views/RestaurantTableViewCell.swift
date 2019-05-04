@@ -10,6 +10,12 @@ import UIKit
 
 class RestaurantTableViewCell: UITableViewCell {
 
+    var restauraunt: Restaurant? {
+        didSet {
+            configureDetails()
+        }
+    }
+
     // MARK: - Outlets
     @IBOutlet var containerView: UIView!
     @IBOutlet var logoImageView: UIImageView!
@@ -19,5 +25,25 @@ class RestaurantTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        configureContainerView()
     }
+
+    private func configureDetails() {
+
+    }
+}
+
+private extension RestaurantTableViewCell {
+    func setupViews() {
+        configureContainerView()
+    }
+
+    func configureContainerView() {
+        containerView.layer.cornerRadius = 5
+        containerView.layer.shadowColor = UIColor.darkGray.cgColor
+        containerView.layer.shadowOpacity = 0.4
+        containerView.layer.shadowOffset = .zero
+        containerView.layer.cornerRadius = 7.5
+    }
+
 }

@@ -12,99 +12,107 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="KGk-i7-Jjw" customClass="RestaurantTableViewCell" customModule="OwenHenley_Associate_iOS_Engineer_London" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="537" height="137"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="KGk-i7-Jjw" customClass="RestaurantTableViewCell" customModule="OwenHenley_Associate_iOS_Engineer_London" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="537" height="169"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="537" height="136.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="537" height="168.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvH-b8-zzx">
-                        <rect key="frame" x="12" y="12" width="513" height="112.5"/>
+                        <rect key="frame" x="12" y="12" width="513" height="144.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="nQM-Zo-lTB">
-                                <rect key="frame" x="16" y="14" width="85" height="85"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="DNT-Da-3nV"/>
-                                    <constraint firstAttribute="height" constant="85" id="TLe-Ym-mPZ"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="S6b-53-DMM">
-                                <rect key="frame" x="117" y="10.5" width="223" height="92"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Iw1-NY-i7z">
+                                <rect key="frame" x="16" y="22.5" width="481" height="100"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mY2-oJ-Z3l">
-                                        <rect key="frame" x="0.0" y="0.0" width="223" height="55"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="nQM-Zo-lTB">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="DNT-Da-3nV"/>
+                                            <constraint firstAttribute="height" constant="85" id="TLe-Ym-mPZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="S6b-53-DMM">
+                                        <rect key="frame" x="101" y="-21.5" width="380" height="106.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="** Restaurant Name **" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBV-ej-Llj">
-                                                <rect key="frame" x="0.0" y="0.0" width="223" height="26.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asian | thai | bbq" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW0-lV-W4n">
-                                                <rect key="frame" x="0.0" y="34.5" width="126.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MiO-OT-Wuo">
-                                        <rect key="frame" x="0.0" y="76" width="106" height="16"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="l8H-Ub-s2S">
-                                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="16" id="8oj-hO-Yv9"/>
-                                                    <constraint firstAttribute="height" constant="16" id="TAE-JD-uDU"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="LWY-VM-5xh">
-                                                <rect key="frame" x="18" y="0.0" width="16" height="16"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="16" id="A6o-aE-Eyo"/>
-                                                    <constraint firstAttribute="height" constant="16" id="lzU-fo-zw1"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="06f-BC-TxE">
-                                                <rect key="frame" x="36" y="0.0" width="16" height="16"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="Elp-Ep-A47"/>
-                                                    <constraint firstAttribute="width" constant="16" id="OOA-1P-dnW"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="zwh-NC-72k">
-                                                <rect key="frame" x="54" y="0.0" width="16" height="16"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="16" id="3Dn-mU-0h9"/>
-                                                    <constraint firstAttribute="height" constant="16" id="Ujh-ec-hnQ"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="lxz-FU-gUc">
-                                                <rect key="frame" x="72" y="0.0" width="16" height="16"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="hyx-qD-xfJ"/>
-                                                    <constraint firstAttribute="width" constant="16" id="ipB-2b-FpK"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="OZd-3C-qTJ">
-                                                <rect key="frame" x="90" y="0.0" width="16" height="16"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="ZLR-8n-lPQ"/>
-                                                    <constraint firstAttribute="width" constant="16" id="pn9-Kz-W0i"/>
-                                                </constraints>
-                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MiO-OT-Wuo">
+                                                <rect key="frame" x="0.0" y="0.0" width="106" height="16"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="l8H-Ub-s2S">
+                                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="8oj-hO-Yv9"/>
+                                                            <constraint firstAttribute="height" constant="16" id="TAE-JD-uDU"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="LWY-VM-5xh">
+                                                        <rect key="frame" x="18" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="A6o-aE-Eyo"/>
+                                                            <constraint firstAttribute="height" constant="16" id="lzU-fo-zw1"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="06f-BC-TxE">
+                                                        <rect key="frame" x="36" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="Elp-Ep-A47"/>
+                                                            <constraint firstAttribute="width" constant="16" id="OOA-1P-dnW"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="zwh-NC-72k">
+                                                        <rect key="frame" x="54" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="3Dn-mU-0h9"/>
+                                                            <constraint firstAttribute="height" constant="16" id="Ujh-ec-hnQ"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="lxz-FU-gUc">
+                                                        <rect key="frame" x="72" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="hyx-qD-xfJ"/>
+                                                            <constraint firstAttribute="width" constant="16" id="ipB-2b-FpK"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="OZd-3C-qTJ">
+                                                        <rect key="frame" x="90" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="ZLR-8n-lPQ"/>
+                                                            <constraint firstAttribute="width" constant="16" id="pn9-Kz-W0i"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mY2-oJ-Z3l">
+                                                <rect key="frame" x="0.0" y="24" width="282" height="82.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="** Restaurant Name ** ** Restaurant Name **" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBV-ej-Llj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="252" height="53"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="asian | thai | bbq | asian | thai | bbq" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW0-lV-W4n">
+                                                        <rect key="frame" x="0.0" y="61" width="282" height="21.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="S6b-53-DMM" firstAttribute="centerY" secondItem="Iw1-NY-i7z" secondAttribute="centerY" id="9i2-2C-vtr"/>
+                                    <constraint firstAttribute="height" constant="100" id="BOU-q1-U2c"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="S6b-53-DMM" firstAttribute="leading" secondItem="nQM-Zo-lTB" secondAttribute="trailing" constant="16" id="18v-ua-NT0"/>
-                            <constraint firstItem="S6b-53-DMM" firstAttribute="centerY" secondItem="nQM-Zo-lTB" secondAttribute="centerY" id="Nf7-Kp-g9p"/>
-                            <constraint firstItem="nQM-Zo-lTB" firstAttribute="centerY" secondItem="gvH-b8-zzx" secondAttribute="centerY" id="Vg6-J7-w3K"/>
-                            <constraint firstItem="nQM-Zo-lTB" firstAttribute="leading" secondItem="gvH-b8-zzx" secondAttribute="leading" constant="16" id="n6r-sx-IYe"/>
+                            <constraint firstAttribute="trailing" secondItem="Iw1-NY-i7z" secondAttribute="trailing" constant="16" id="IaP-Pf-1gw"/>
+                            <constraint firstItem="Iw1-NY-i7z" firstAttribute="centerY" secondItem="gvH-b8-zzx" secondAttribute="centerY" id="tdU-Zg-82u"/>
+                            <constraint firstItem="Iw1-NY-i7z" firstAttribute="leading" secondItem="gvH-b8-zzx" secondAttribute="leading" constant="16" id="vdT-xf-Pxm"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -121,15 +129,15 @@
                 <outlet property="cusineTypesLabel" destination="DW0-lV-W4n" id="Nd2-oL-lnj"/>
                 <outlet property="logoImageView" destination="nQM-Zo-lTB" id="xva-LM-fC2"/>
                 <outlet property="restaurantNameLabel" destination="RBV-ej-Llj" id="P4t-91-u2s"/>
-                <outletCollection property="ratingStarImageView" destination="l8H-Ub-s2S" collectionClass="NSMutableArray" id="FYr-SD-12f"/>
+                <outletCollection property="ratingStarImageView" destination="lxz-FU-gUc" collectionClass="NSMutableArray" id="Hv3-jB-3VS"/>
                 <outletCollection property="ratingStarImageView" destination="LWY-VM-5xh" collectionClass="NSMutableArray" id="9cL-zf-ESd"/>
-                <outletCollection property="ratingStarImageView" destination="06f-BC-TxE" collectionClass="NSMutableArray" id="eBa-de-DYL"/>
+                <outletCollection property="ratingStarImageView" destination="OZd-3C-qTJ" collectionClass="NSMutableArray" id="UN4-T6-MTU"/>
                 <outletCollection property="ratingStarImageView" destination="06f-BC-TxE" collectionClass="NSMutableArray" id="Ua3-Wq-Kad"/>
                 <outletCollection property="ratingStarImageView" destination="zwh-NC-72k" collectionClass="NSMutableArray" id="PkA-bM-im5"/>
-                <outletCollection property="ratingStarImageView" destination="lxz-FU-gUc" collectionClass="NSMutableArray" id="Hv3-jB-3VS"/>
-                <outletCollection property="ratingStarImageView" destination="OZd-3C-qTJ" collectionClass="NSMutableArray" id="UN4-T6-MTU"/>
+                <outletCollection property="ratingStarImageView" destination="l8H-Ub-s2S" collectionClass="NSMutableArray" id="FYr-SD-12f"/>
+                <outletCollection property="ratingStarImageView" destination="06f-BC-TxE" collectionClass="NSMutableArray" id="eBa-de-DYL"/>
             </connections>
-            <point key="canvasLocation" x="289.13043478260875" y="209.26339285714286"/>
+            <point key="canvasLocation" x="289.13043478260875" y="219.97767857142856"/>
         </tableViewCell>
     </objects>
     <resources>

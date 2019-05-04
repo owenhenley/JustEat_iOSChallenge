@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="eg: SE18" translatesAutoresizingMaskIntoConstraints="NO" id="WK6-05-ncc">
-                                <rect key="frame" x="0.0" y="140" width="358" height="56"/>
+                                <rect key="frame" x="0.0" y="140" width="362" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gol-SQ-AT8">
@@ -37,7 +37,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHP-QA-wNT">
-                                <rect key="frame" x="374" y="156" width="24" height="24"/>
+                                <rect key="frame" x="370" y="156" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="PFx-Yo-Dxd"/>
                                     <constraint firstAttribute="width" constant="24" id="XCb-gr-9h3"/>
@@ -52,9 +52,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gol-SQ-AT8" firstAttribute="trailing" secondItem="QJF-eX-wpE" secondAttribute="trailing" id="ACS-UU-rmZ"/>
-                            <constraint firstItem="QJF-eX-wpE" firstAttribute="trailing" secondItem="UHP-QA-wNT" secondAttribute="trailing" constant="16" id="DRc-aJ-Nih"/>
+                            <constraint firstItem="QJF-eX-wpE" firstAttribute="trailing" secondItem="UHP-QA-wNT" secondAttribute="trailing" constant="20" id="DRc-aJ-Nih"/>
                             <constraint firstItem="UHP-QA-wNT" firstAttribute="centerY" secondItem="WK6-05-ncc" secondAttribute="centerY" id="Kg5-nq-jXH"/>
-                            <constraint firstItem="UHP-QA-wNT" firstAttribute="leading" secondItem="WK6-05-ncc" secondAttribute="trailing" constant="16" id="LPq-TN-Nvw"/>
+                            <constraint firstItem="UHP-QA-wNT" firstAttribute="leading" secondItem="WK6-05-ncc" secondAttribute="trailing" constant="8" id="LPq-TN-Nvw"/>
                             <constraint firstItem="WK6-05-ncc" firstAttribute="top" secondItem="QJF-eX-wpE" secondAttribute="top" id="fHG-Qy-iSL"/>
                             <constraint firstItem="WK6-05-ncc" firstAttribute="leading" secondItem="QJF-eX-wpE" secondAttribute="leading" id="fih-CY-my6"/>
                             <constraint firstItem="gol-SQ-AT8" firstAttribute="leading" secondItem="QJF-eX-wpE" secondAttribute="leading" id="gYV-Si-fRa"/>
@@ -81,7 +81,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QhF-ew-F9M">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.95502855329949243" green="0.0" blue="0.008940743852360938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
