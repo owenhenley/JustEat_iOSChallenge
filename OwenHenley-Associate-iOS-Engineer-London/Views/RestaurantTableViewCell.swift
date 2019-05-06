@@ -46,7 +46,7 @@ private extension RestaurantTableViewCell {
         setIsOpen()
         setCuisines()
         setLogo()
-        setStarRating()
+        setRating()
     }
 
     /// Set the restaurant name.
@@ -89,7 +89,7 @@ private extension RestaurantTableViewCell {
     }
 
     /// Set the rating for the restaurant.
-    func setStarRating() {
+    func setRating() {
         guard let rating = restauraunt?.rating else {
             return
         }

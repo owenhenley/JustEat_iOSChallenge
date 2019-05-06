@@ -37,8 +37,7 @@ class NetworkController {
 
         // Query
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        #warning("Put postcode back")
-        let query = URLQueryItem(name: "q", value: "se19")
+        let query = URLQueryItem(name: "q", value: postcode)
         components?.queryItems = [query]
 
         guard let requestUrl = components?.url else {

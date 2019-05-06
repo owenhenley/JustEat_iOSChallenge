@@ -19,7 +19,8 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
     private var searchResults = [Restaurant]()
     private let cellId = "restaurantCell"
-    private var locationManager: CLLocationManager?
+    private var locationManager = CLLocationManager()
+    var postalCode = ""
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -106,13 +107,53 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - CLLocationManagerDelegate
 extension SearchViewController: CLLocationManagerDelegate {
     /// Get the users current location.
     ///
     /// - Parameter sender: The gps button.
     @IBAction func locationArrowTapped(_ sender: UIButton) {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.requestWhenInUseAuthorization()
+        setupCoreLocation()
+        getCurrentLocation {
+            NetworkController.shared.fetchRestauraunts(postcode: self.postalCode) { (results) in
+                guard let results = results else { return }
+
+                DispatchQueue.main.async {
+                    self.searchResults = results
+                    self.searchBar.text = self.postalCode
+
+                    self.tableView.reloadData()
+                    let topIndex = IndexPath(row: 0, section: 0)
+                    self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
+                }
+            }
+        }
+    }
+
+    /// Setup CoreLocation.
+    func setupCoreLocation () {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+
+    /// Get the users current location.
+    ///
+    /// This will get the users postal code.
+    /// - Parameter completion: A closure to do some networking in.
+    func getCurrentLocation(completion: @escaping () -> Void) {
+        guard let location = locationManager.location?.coordinate else {
+            return
+        }
+
+        let eventLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(eventLocation) { (placemarks, error) in
+            if let placemark = placemarks?.first, let postCode = placemark.postalCode {
+                self.postalCode = postCode
+                completion()
+            }
+        }
     }
 }
