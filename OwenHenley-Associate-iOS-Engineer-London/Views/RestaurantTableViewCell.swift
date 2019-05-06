@@ -26,7 +26,10 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet var logoImageView: UIImageView!
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var cuisineTypesLabel: UILabel!
-    @IBOutlet var ratingStars: [UIView]!
+    @IBOutlet var openClosedView: UIView!
+    @IBOutlet var ratingView: UIView!
+    @IBOutlet var openClosedLabel: UILabel!
+    @IBOutlet var ratingLabel: UILabel!
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -39,11 +42,36 @@ class RestaurantTableViewCell: UITableViewCell {
 private extension RestaurantTableViewCell {
     /// Configure what data to show on screen.
     func configureDetails() {
-        // Name
-        restaurantNameLabel.text = restauraunt?.name
+        openClosedLabel.text = "ejhdvewkjycv"
+        setName()
+        setIsOpen()
         setCuisines()
         setLogo()
         setStarRating()
+    }
+
+    /// Set the restaurant name.
+    func setName() {
+        guard let name = restauraunt?.name else {
+            return
+        }
+        restaurantNameLabel.text = name
+    }
+
+
+    /// Check if the restaurant is open.
+    func setIsOpen() {
+        guard let isOpenNow = restauraunt?.isOpenNow else {
+            return
+        }
+
+        if isOpenNow {
+            openClosedLabel.text = "Open"
+            openClosedView.backgroundColor = .green
+        } else {
+            openClosedLabel.text = "Closed"
+            openClosedView.backgroundColor = .red
+        }
     }
 
     /// Set the restaurants types of food.
@@ -53,30 +81,45 @@ private extension RestaurantTableViewCell {
         }
         var cuisineText = ""
         for cuisine in cuisineTypes {
-            cuisineText.append(" \(cuisine.name) |")
+            guard let name = cuisine.name else {
+                return
+            }
+            cuisineText.append(" \(name) |")
         }
         cuisineTypesLabel.text = "|\(cuisineText)"
     }
 
     /// Set the rating for the restaurant.
     func setStarRating() {
-        for star in ratingStars {
-            guard let rating = restauraunt?.rating else {
-                return
-            }
-            let tag = Double(star.tag)
+        guard let rating = restauraunt?.rating else {
+            return
+        }
+        ratingLabel.text = "\(rating)/6.0"
 
-            if tag <= rating {
-                star.backgroundColor = .yellow
-            }
+        if rating <= 2 {
+            ratingView.backgroundColor = .red
+            return
+        }
+
+        if rating <= 3.5 {
+            ratingView.backgroundColor = .orange
+            return
+        }
+
+        if rating > 3.5 {
+            ratingView.backgroundColor = .green
         }
     }
 
     /// Set the restaurants logo.
     func setLogo() {
         // Logo
-        if let restaurantLogo = restauraunt?.logo.first {
-            if let cachedImage = imageCache.object(forKey: restaurantLogo.logoURLString as NSString) {
+        guard let logo = restauraunt?.logo else {
+            return
+        }
+
+        if let restaurantLogo = logo.first {
+            if let cachedImage = imageCache.object(forKey: restaurantLogo.logoURLString! as NSString) {
                 self.logoImageView.image = cachedImage
             } else {
                 let networkController = NetworkController.shared
@@ -86,7 +129,7 @@ private extension RestaurantTableViewCell {
                     }
                     DispatchQueue.main.async {
                         self.logoImageView.image = logo
-                        self.imageCache.setObject(logo, forKey: restaurantLogo.logoURLString as NSString)
+                        self.imageCache.setObject(logo, forKey: restaurantLogo.logoURLString! as NSString)
                     }
                 }
             }
@@ -102,9 +145,9 @@ private extension RestaurantTableViewCell {
     func setupViews() {
         configureContainerView()
         logoImageView.layer.cornerRadius = 4
-        for r in ratingStars {
-            r.layer.cornerRadius = r.frame.height / 2
-        }
+        let cornerRadius = openClosedView.frame.height / 2
+        openClosedView.layer.cornerRadius = cornerRadius
+        ratingView.layer.cornerRadius = cornerRadius
     }
 
     /// Configure how the cell container looks.

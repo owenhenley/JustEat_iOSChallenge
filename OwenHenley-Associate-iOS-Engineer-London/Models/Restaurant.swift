@@ -20,12 +20,14 @@ struct TopLevelDictionary: Decodable {
 /// An object with all data for a restaurant.
 struct Restaurant: Decodable {
     let name: String?
+    let isOpenNow: Bool
     let rating: Double?
     let cuisineTypes: [CuisineTypes]?
-    let logo: [Logo]
+    let logo: [Logo]?
 
     enum CodingKeys: String, CodingKey {
         case name = "Name"
+        case isOpenNow = "IsOpenNow"
         case rating = "RatingStars"
         case cuisineTypes = "CuisineTypes"
         case logo = "Logo"
@@ -34,7 +36,7 @@ struct Restaurant: Decodable {
 
 /// An object from `Restaurant` that holds Cuisine Types.
 struct CuisineTypes: Decodable {
-    let name: String
+    let name: String?
     enum CodingKeys: String, CodingKey {
         case name = "Name"
     }
@@ -42,7 +44,7 @@ struct CuisineTypes: Decodable {
 
 /// An object that holds the `Restaurant` logo. NB: Images are .`gif`'s
 struct Logo: Decodable {
-    let logoURLString: String
+    let logoURLString: String?
 
     enum CodingKeys: String, CodingKey {
         case logoURLString = "StandardResolutionURL"
