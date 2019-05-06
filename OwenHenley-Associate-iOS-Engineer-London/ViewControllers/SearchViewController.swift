@@ -15,16 +15,20 @@ class SearchViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
 
     // MARK: - Properties
-    private var searchResults = [Restaurant?]()
+    private var searchResults = [Restaurant]()
     private let cellId = "restaurantCell"
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupSearchBar()
     }
 
     // MARK: - Actions
+    /// <#Description#>
+    ///
+    /// - Parameter sender: <#sender description#>
     @IBAction func locationArrowTapped(_ sender: UIButton) {
 
     }
@@ -42,6 +46,8 @@ extension SearchViewController {
         
         let nib = UINib(nibName: "RestaurantTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "restaurantCell")
+
+        tableView.keyboardDismissMode = .onDrag
     }
 }
 
@@ -57,21 +63,48 @@ extension SearchViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return searchResults.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? RestaurantTableViewCell else {
             return UITableViewCell()
         }
+
+        cell.restauraunt = searchResults[indexPath.row]
+
         return cell
     }
 }
 
-
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+    /// <#Description#>
+    func setupSearchBar() {
+        searchBar.autocapitalizationType = UITextAutocapitalizationType.allCharacters
+        searchBar.delegate = self
+    }
+
+    /// <#Description#>
+    ///
+    /// - Parameter searchBar: <#searchBar description#>
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else {
+            // show alert
+            return
+        }
+
+        NetworkController.shared.fetchRestauraunts(postcode: searchText) { (results) in
+            guard let results = results else {
+                return
+            }
+
+            self.searchResults = results
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+
+        searchBar.endEditing(true)
     }
 }
