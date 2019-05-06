@@ -66,7 +66,11 @@ extension SearchViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        cell.restauraunt = searchResults[indexPath.row]
+        let sortedResults = searchResults.sorted { (restaurant, _) -> Bool in
+            return restaurant.isOpenNow
+        }
+
+        cell.restauraunt = sortedResults[indexPath.row]
 
         return cell
     }
