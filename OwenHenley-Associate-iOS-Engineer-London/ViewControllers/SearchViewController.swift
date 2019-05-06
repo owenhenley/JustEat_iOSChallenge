@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 /// ViewController Class for the search screen.
 class SearchViewController: UIViewController {
@@ -18,20 +19,13 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
     private var searchResults = [Restaurant]()
     private let cellId = "restaurantCell"
+    private var locationManager: CLLocationManager?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         configureSearchBar()
-    }
-
-    // MARK: - Actions
-    /// Get the users current location.
-    ///
-    /// - Parameter sender: The gps button.
-    @IBAction func locationArrowTapped(_ sender: UIButton) {
-
     }
 }
 
@@ -105,5 +99,16 @@ extension SearchViewController: UISearchBarDelegate {
         }
 
         searchBar.endEditing(true)
+    }
+}
+
+extension SearchViewController: CLLocationManagerDelegate {
+    /// Get the users current location.
+    ///
+    /// - Parameter sender: The gps button.
+    @IBAction func locationArrowTapped(_ sender: UIButton) {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
     }
 }

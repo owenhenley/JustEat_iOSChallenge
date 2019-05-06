@@ -42,7 +42,6 @@ class RestaurantTableViewCell: UITableViewCell {
 private extension RestaurantTableViewCell {
     /// Configure what data to show on screen.
     func configureDetails() {
-        openClosedLabel.text = "ejhdvewkjycv"
         setName()
         setIsOpen()
         setCuisines()
