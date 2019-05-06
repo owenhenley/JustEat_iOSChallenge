@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// This class handles all the networking to the Just Eat api.
+/// This class handles all the networking to the Just Eat API.
 ///
 /// Call the singleton `shared()` to use this class.
 class NetworkController {
@@ -37,8 +37,8 @@ class NetworkController {
 
         // Query
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        // #warning("Put postcode back")
-        let query = URLQueryItem(name: "q", value: postcode)
+        #warning("Put postcode back")
+        let query = URLQueryItem(name: "q", value: "se19")
         components?.queryItems = [query]
 
         guard let requestUrl = components?.url else {
@@ -101,11 +101,13 @@ class NetworkController {
             return
         }
 
+        // URL
         guard let logoURL = URL(string: imageURL) else {
             completion(nil)
             return
         }
 
+        // Request
         var request = URLRequest(url: logoURL)
         request.httpMethod = "GET"
         request.httpBody = nil

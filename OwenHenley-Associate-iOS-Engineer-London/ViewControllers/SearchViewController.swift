@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// ViewController Class for the search screen.
 class SearchViewController: UIViewController {
 
     // MARK: - Outlets
@@ -22,13 +23,13 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupSearchBar()
+        configureSearchBar()
     }
 
     // MARK: - Actions
-    /// <#Description#>
+    /// Get the users current location.
     ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: The gps button.
     @IBAction func locationArrowTapped(_ sender: UIButton) {
 
     }
@@ -79,21 +80,19 @@ extension SearchViewController: UITableViewDataSource {
 
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
-    /// <#Description#>
-    func setupSearchBar() {
+    /// Setup searchbar configuration.
+    func configureSearchBar() {
         searchBar.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         searchBar.delegate = self
     }
 
-    /// <#Description#>
-    ///
-    /// - Parameter searchBar: <#searchBar description#>
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {
             // show alert
             return
         }
 
+        // Get list
         NetworkController.shared.fetchRestauraunts(postcode: searchText) { (results) in
             guard let results = results else {
                 return
