@@ -12,9 +12,10 @@ import CoreLocation
 /// ViewController Class for the search screen.
 class SearchViewController: UIViewController {
 
-    // MARK: - Outlets
+    // MARK: - Elements
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
+    private let indicator = UIActivityIndicatorView(style: .whiteLarge)
 
     // MARK: - Properties
     private var searchResults = [Restaurant]()
@@ -54,6 +55,19 @@ extension SearchViewController: UITableViewDelegate {
         return 150
     }
 
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return searchResults.isEmpty ? 250 : 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "Enter a valid Postal Code or use \nGPS to find your location."
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        return label
+    }
+
 }
 
 // MARK: - UITableViewDataSource
@@ -79,6 +93,7 @@ extension SearchViewController: UITableViewDataSource {
 
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
+
     /// Setup searchbar configuration.
     func configureSearchBar() {
         searchBar.autocapitalizationType = UITextAutocapitalizationType.allCharacters
@@ -86,12 +101,13 @@ extension SearchViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else {
-            // show alert
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            missingPostcodeAlert()
             return
         }
 
         // Get list
+        handleActivityMonitor()
         NetworkController.shared.fetchRestauraunts(postcode: searchText) { (results) in
             guard let results = results else {
                 return
@@ -99,6 +115,7 @@ extension SearchViewController: UISearchBarDelegate {
 
             self.searchResults = results
             DispatchQueue.main.async {
+                self.handleActivityMonitor()
                 self.tableView.reloadData()
             }
         }
@@ -113,6 +130,7 @@ extension SearchViewController: CLLocationManagerDelegate {
     ///
     /// - Parameter sender: The gps button.
     @IBAction func locationArrowTapped(_ sender: UIButton) {
+        handleActivityMonitor()
         setupCoreLocation()
         getCurrentLocation {
             NetworkController.shared.fetchRestauraunts(postcode: self.postalCode) { (results) in
@@ -125,6 +143,7 @@ extension SearchViewController: CLLocationManagerDelegate {
                     self.tableView.reloadData()
                     let topIndex = IndexPath(row: 0, section: 0)
                     self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
+                    self.handleActivityMonitor()
                 }
             }
         }
@@ -154,6 +173,26 @@ extension SearchViewController: CLLocationManagerDelegate {
                 self.postalCode = postCode
                 completion()
             }
+        }
+    }
+}
+
+private extension SearchViewController {
+    func missingPostcodeAlert() {
+        let ac = UIAlertController(title: "Oops", message: "You need to input a postal code to get results.\n\nPlease try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Try Again", style: .cancel))
+        present(ac, animated: true)
+    }
+
+    func handleActivityMonitor() {
+        if indicator.isAnimating {
+            indicator.stopAnimating()
+        } else {
+            indicator.color = .black
+            indicator.startAnimating()
+            indicator.hidesWhenStopped = true
+            view.addSubview(indicator)
+            indicator.centerInSuperview()
         }
     }
 }

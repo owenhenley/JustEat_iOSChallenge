@@ -15,6 +15,7 @@ class NetworkController {
 
     // MARK: - Singleton
     static let shared = NetworkController()
+    private init() {}
 
     // MARK: - Properties
     private let baseURL = URL(string: "https://public.je-apis.com/")
