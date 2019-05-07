@@ -2,7 +2,7 @@
 //  RestaurantTableViewCell.swift
 //  OwenHenley-Associate-iOS-Engineer-London
 //
-//  Created by Owen Henley on 04/05/2019.
+//  Created by Owen Henley on 06/05/2019.
 //  Copyright © 2019 Owen Henley. All rights reserved.
 //
 
@@ -38,7 +38,7 @@ class RestaurantTableViewCell: UITableViewCell {
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Set cell details.
 private extension RestaurantTableViewCell {
     /// Configure what data to show on screen.
     func configureDetails() {
@@ -95,6 +95,7 @@ private extension RestaurantTableViewCell {
         }
         ratingLabel.text = "\(rating)/6.0"
 
+        #warning("Surley this can be better...?")
         if rating <= 2 {
             ratingView.backgroundColor = .red
             return

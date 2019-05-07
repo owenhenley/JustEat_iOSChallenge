@@ -2,13 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Language</key>
+	<key>base-url</key>
+	<string>https://public.je-apis.com/</string>
+	<key>accept-language</key>
 	<string>en-GB</string>
-	<key>Tenant</key>
+	<key>accept-tenant</key>
 	<string>uk</string>
-	<key>Host</key>
+	<key>host</key>
 	<string>public.je-apis.com</string>
-	<key>AuthCode</key>
+	<key>authorization</key>
 	<string>Basic VGVjaFRlc3Q6bkQ2NGxXVnZreDVw</string>
 </dict>
 </plist>

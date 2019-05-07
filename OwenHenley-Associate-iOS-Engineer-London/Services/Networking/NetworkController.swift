@@ -2,7 +2,7 @@
 //  NetworkController.swift
 //  OwenHenley-Associate-iOS-Engineer-London
 //
-//  Created by Owen Henley on 04/05/2019.
+//  Created by Owen Henley on 06/05/2019.
 //  Copyright © 2019 Owen Henley. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 
 /// This class handles all the networking to the Just Eat API.
 ///
-/// Call the singleton `shared()` to use this class.
+/// NB: Call the singleton `shared()` to use this class.
 class NetworkController {
 
     // MARK: - Singleton
@@ -18,7 +18,7 @@ class NetworkController {
     private init() {}
 
     // MARK: - Properties
-    private let baseURL = URL(string: "https://public.je-apis.com/")
+    private lazy var baseURL = URL(string: value(for: "base-url"))
 
     /// Fetch a list of Restauants from a string input.
     ///
@@ -48,14 +48,10 @@ class NetworkController {
         }
 
         // Header
-        let authCode = "Basic VGVjaFRlc3Q6bkQ2NGxXVnZreDVw"
-        let host = "public.je-apis.com"
-        let headers = [
-            "accept-tenant": "uk",
-            "accept-language": "en-GB",
-            "authorization": authCode,
-            "host": host
-        ]
+        let headers = ["accept-tenant": value(for: "accept-tenant"),
+                     "accept-language": value(for: "accept-language"),
+                       "authorization": value(for: "authorization"),
+                                "host": value(for: "host")]
 
         // Request
         var request = URLRequest(url: requestUrl)
