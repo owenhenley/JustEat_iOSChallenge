@@ -73,6 +73,7 @@ extension SearchViewController: UISearchBarDelegate {
             DispatchQueue.main.async {
                 self.handle(self.activityIndicator)
                 self.tableView.reloadData()
+                self.scrollToTop()
             }
         }
         searchBar.endEditing(true)
@@ -95,12 +96,19 @@ extension SearchViewController: CLLocationManagerDelegate {
                     self.resultsDataSource.searchResults = results
                     self.searchBar.text = self.postcode
 
-                    let topIndex = IndexPath(row: 0, section: 0)
-                    self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
                     self.tableView.reloadData()
+                    self.scrollToTop()
                     self.handle(self.activityIndicator)
                 }
             }
+        }
+    }
+
+    /// Scroll to top of the table view.
+    func scrollToTop() {
+        if self.tableView.visibleCells.count > 0 {
+            let topIndex = IndexPath(row: 0, section: 0)
+            self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
         }
     }
 

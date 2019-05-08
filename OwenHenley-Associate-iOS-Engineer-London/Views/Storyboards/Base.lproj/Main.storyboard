@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="120" id="Pyy-SL-DgZ"/>
                                 </constraints>
                             </imageView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="eg: SE18" translatesAutoresizingMaskIntoConstraints="NO" id="WK6-05-ncc">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="eg: SE19" translatesAutoresizingMaskIntoConstraints="NO" id="WK6-05-ncc">
                                 <rect key="frame" x="0.0" y="120" width="362" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
