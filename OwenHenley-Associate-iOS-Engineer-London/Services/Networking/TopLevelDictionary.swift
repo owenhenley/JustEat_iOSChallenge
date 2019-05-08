@@ -9,6 +9,8 @@
 import Foundation
 
 /// Top level of the REST endpoint.
+///
+/// JSON link: [Just Eat REST API endpoint](https://public.je-apis.com/restaurants?q=se19)
 struct TopLevelDictionary: Decodable {
     let restaurants: [Restaurant]
 

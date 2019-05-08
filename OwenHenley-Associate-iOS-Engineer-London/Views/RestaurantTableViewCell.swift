@@ -95,7 +95,7 @@ private extension RestaurantTableViewCell {
         }
         ratingLabel.text = "\(rating)/6.0"
 
-        #warning("Surley this can be better...?")
+        // I feel like this could be handled much better...
         if rating <= 2 {
             ratingView.backgroundColor = .red
             return

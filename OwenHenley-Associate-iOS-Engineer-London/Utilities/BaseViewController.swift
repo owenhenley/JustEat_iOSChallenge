@@ -1,5 +1,5 @@
 //
-//  UIViewController+Ext.swift
+//  BaseViewController.swift
 //  OwenHenley-Associate-iOS-Engineer-London
 //
 //  Created by Owen Henley on 07/05/2019.
@@ -8,7 +8,12 @@
 
 import UIKit
 
-extension UIViewController {
+/// Subclass of `UIViewController" with some handy methods.
+///
+/// - `UIActivityIndicator`.
+/// - Generic `UIAlert`.
+/// - Table view placeholder.
+class BaseViewController: UIViewController {
     /// Show or hide an activity indicatior in the center of the screen.
     ///
     /// - Parameter activityIndicatior: The `UIActivityIndicatorView` you wish to handle.

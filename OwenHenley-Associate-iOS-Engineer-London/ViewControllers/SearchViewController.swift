@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 /// ViewController Class for the search screen.
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
 
     // MARK: - Views
     @IBOutlet var tableView: UITableView!

@@ -8,7 +8,9 @@
 
 import Foundation
 
-/// An object that holds the `Restaurant` logo. NB: Images are .`gif`'s.
+/// An object that holds the `Restaurant` logo.
+///
+/// Note: Images are .`gif`'s.
 struct Logo: Decodable {
     let logoURLString: String?
 
