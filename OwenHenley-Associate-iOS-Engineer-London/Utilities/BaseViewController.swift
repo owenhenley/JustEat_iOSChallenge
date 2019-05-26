@@ -17,16 +17,18 @@ class BaseViewController: UIViewController {
     /// Show or hide an activity indicatior in the center of the screen.
     ///
     /// - Parameter activityIndicatior: The `UIActivityIndicatorView` you wish to handle.
-    func handle(_ activityIndicatior: UIActivityIndicatorView) {
-        if activityIndicatior.isAnimating {
-            activityIndicatior.stopAnimating()
-            activityIndicatior.removeFromSuperview()
-        } else {
-            activityIndicatior.color = .black
-            activityIndicatior.startAnimating()
-            activityIndicatior.hidesWhenStopped = true
-            view.addSubview(activityIndicatior)
-            activityIndicatior.centerInSuperview()
+    func handle(_ activityIndicatior: UIActivityIndicatorView, isActive: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            if isActive {
+                activityIndicatior.color = .black
+                activityIndicatior.startAnimating()
+                activityIndicatior.hidesWhenStopped = true
+                self?.view.addSubview(activityIndicatior)
+                activityIndicatior.centerInSuperview()
+            } else {
+                activityIndicatior.stopAnimating()
+                activityIndicatior.removeFromSuperview()
+            }
         }
     }
 

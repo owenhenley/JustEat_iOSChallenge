@@ -18,6 +18,7 @@ class SearchViewController: BaseViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
 
     // MARK: - Properties
+    private let networkController = NetworkController()
     private var resultsDataSource = SearchResultsDataSource()
     private var locationManager = CLLocationManager()
     private var postcode = ""
@@ -36,6 +37,14 @@ class SearchViewController: BaseViewController {
         showAlert(title: "Oops",
                   message: "You need to input a postcode to get results.\n\nPlease try again.",
                   actionTitle: "Try Again")
+    }
+
+    /// Scroll to top of the table view.
+    private func scrollToTop() {
+        if self.tableView.visibleCells.count > 0 {
+            let topIndex = IndexPath(row: 0, section: 0)
+            self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
+        }
     }
 }
 
@@ -63,17 +72,21 @@ extension SearchViewController: UISearchBarDelegate {
         }
 
         // Get list
-        handle(activityIndicator)
-        NetworkController.shared.fetchRestauraunts(postcode: searchText) { (results) in
-            guard let results = results else {
-                return
+        handle(activityIndicator, isActive: true)
+        networkController.fetchRestauraunts(postcode: searchText) { result in
+            defer {
+                self.handle(self.activityIndicator, isActive: false)
             }
 
-            self.resultsDataSource.searchResults = results
-            DispatchQueue.main.async {
-                self.handle(self.activityIndicator)
-                self.tableView.reloadData()
-                self.scrollToTop()
+            switch result {
+            case.success(let results):
+                self.resultsDataSource.searchResults = results
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.scrollToTop()
+                }
+            case .failure(let error):
+                print("Error: \(#file), \(#function), \(#line), Message: \(error). \(error.localizedDescription)")
             }
         }
         searchBar.endEditing(true)
@@ -86,46 +99,53 @@ extension SearchViewController: CLLocationManagerDelegate {
     ///
     /// - Parameter sender: The gps button.
     @IBAction func locationArrowTapped(_ sender: UIButton) {
-        handle(activityIndicator)
+        handle(activityIndicator, isActive: true)
         authLocationAccess()
         getCurrentLocation {
-            NetworkController.shared.fetchRestauraunts(postcode: self.postcode) { (results) in
-                guard let results = results else { return }
+            self.networkController.fetchRestauraunts(postcode: self.postcode) { [weak self] result in
+                guard let strongSelf = self else {
+                    return
+                }
 
-                DispatchQueue.main.async {
-                    self.resultsDataSource.searchResults = results
-                    self.searchBar.text = self.postcode
+                defer {
+                    self?.handle(strongSelf.activityIndicator, isActive: false)
+                }
 
-                    self.tableView.reloadData()
-                    self.scrollToTop()
-                    self.handle(self.activityIndicator)
+                switch result {
+                case .success(let results):
+                    self?.resultsDataSource.searchResults = results
+                    DispatchQueue.main.async {
+                        self?.searchBar.text = self?.postcode
+                        self?.tableView.reloadData()
+                        self?.scrollToTop()
+                    }
+                case .failure(let error):
+                    print("Error: \(#file), \(#function), \(#line), Message: \(error). \(error.localizedDescription)")
                 }
             }
-        }
-    }
-
-    /// Scroll to top of the table view.
-    func scrollToTop() {
-        if self.tableView.visibleCells.count > 0 {
-            let topIndex = IndexPath(row: 0, section: 0)
-            self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
         }
     }
 
     /// Get the users current location.
     ///
     /// This will get the users postal code.
-    /// - Parameter completion: A closure to do some networking in.
     func getCurrentLocation(completion: @escaping () -> Void) {
         guard let location = locationManager.location?.coordinate else {
+            print("Error getting location.")
             return
         }
 
         let eventLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         let geoCoder = CLGeocoder()
-        geoCoder.reverseGeocodeLocation(eventLocation) { (placemarks, error) in
+        geoCoder.reverseGeocodeLocation(eventLocation) { [weak self] placemarks, error in
+            if let error = error {
+                print("Error: \(#file), \(#function), \(#line), Message: \(error). \(error.localizedDescription)")
+                self?.showAlert(title: "Error", message: "Could not get current location.", actionTitle: "OK")
+                return
+            }
+
             if let placemark = placemarks?.first, let postCode = placemark.postalCode {
-                self.postcode = postCode
+                self?.postcode = postCode
                 completion()
             }
         }

@@ -8,14 +8,16 @@
 
 import UIKit
 
+enum NetworkError: Error {
+    case badData
+    case failedToParseData
+    case systemError
+}
+
 /// This class handles all the networking to the Just Eat API.
 ///
 /// NB: Call the singleton `shared()` to use this class.
 class NetworkController {
-
-    // MARK: - Singleton
-    static let shared = NetworkController()
-    private init() {}
 
     // MARK: - Properties
     private lazy var baseURL = URL(string: value(for: "base-url"))
@@ -26,11 +28,10 @@ class NetworkController {
     /// - Parameters:
     ///   - postcode: A `String` input containing a postcode.
     ///   - completion: A closure passing back the data from the JSON.
-    func fetchRestauraunts(postcode: String, completion: @escaping ([Restaurant]?) -> Void) {
+    func fetchRestauraunts(postcode: String, completion: @escaping (Result<[Restaurant], NetworkError>) -> Void) {
         // URL
         guard var url = baseURL else {
             print("Issue with baseURL: \(#function)")
-            completion(nil)
             return
         }
 
@@ -43,7 +44,6 @@ class NetworkController {
 
         guard let requestUrl = components?.url else {
             print("Issue with requestURL: \(#function)")
-            completion(nil)
             return
         }
 
@@ -60,30 +60,28 @@ class NetworkController {
         request.httpBody = nil
 
         // Network Call
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request) { data, response, error -> Void in
+        URLSession.shared.dataTask(with: request) { data, _, error -> Void in
             if let error = error {
                 print("Error: \(#file), \(#function), \(#line), Message: \(error). \(error.localizedDescription)")
-                completion(nil)
+                completion(.failure(.systemError))
                 return
             }
-
             guard let data = data else {
-                completion(nil)
+                completion(.failure(.badData))
                 return
             }
 
             let jsonDecoder = JSONDecoder()
             do {
                 let topLevelDictionary = try jsonDecoder.decode(TopLevelDictionary.self, from: data)
-                completion(topLevelDictionary.restaurants)
+                let restaurants = topLevelDictionary.restaurants
+                completion(.success(restaurants))
             } catch {
                 print("Error: \(#file), \(#function), \(#line), Message: \(error). \(error.localizedDescription)")
-                completion(nil)
+                completion(.failure(.failedToParseData))
                 return
             }
-        }
-        dataTask.resume()
+        }.resume()
     }
 
     /// Fetch a restaurants logo.

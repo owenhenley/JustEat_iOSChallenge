@@ -122,7 +122,7 @@ private extension RestaurantTableViewCell {
             if let cachedImage = imageCache.object(forKey: restaurantLogo.logoURLString! as NSString) {
                 self.logoImageView.image = cachedImage
             } else {
-                let networkController = NetworkController.shared
+                let networkController = NetworkController()
                 networkController.fetchLogo(imageURL: restaurantLogo) { (logo) in
                     guard let logo = logo else {
                         return

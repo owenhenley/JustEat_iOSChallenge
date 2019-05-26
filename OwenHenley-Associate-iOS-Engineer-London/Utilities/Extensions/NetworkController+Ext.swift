@@ -14,7 +14,7 @@ extension NetworkController {
     /// - Parameter keyname: The key of the header.
     /// - Returns: The value for the key.
     func value(for keyname: String) -> String {
-        let filePath = Bundle.main.path(forResource: "ApiValues", ofType: "plist")
+        let filePath = Bundle.main.path(forResource: "APIValues", ofType: "plist")
         let plist = NSDictionary(contentsOfFile:filePath!)
         let value = plist?.object(forKey: keyname) as! String
         return value
